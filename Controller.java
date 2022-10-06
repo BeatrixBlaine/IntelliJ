@@ -26,6 +26,7 @@ public class Controller {
                                 @PathVariable String location){
         return "My name is " + name + ". I am " + age + " years old. I am living in " + location;
     }
+
     // Post Mapping, Request Body, Input JSON Output JSON
 
     @PostMapping("/users")
@@ -46,6 +47,15 @@ public class Controller {
         int tahun_sekarang = kalender.get(Calendar.YEAR);
         user.setAge(tahun_sekarang - user.getTahun_lahir());
         return new ResponseEntity(user, HttpStatus.OK);
+    }
+
+    @PostMapping("/users3")
+    public String konversi_tahun(@RequestBody User user){
+
+        Calendar kalender = Calendar.getInstance();
+        int tahun_sekarang = kalender.get(Calendar.YEAR);
+        user.setAge(tahun_sekarang - user.getTahun_lahir());
+        return "Your Age is " + user.getAge() ;
 
     }
 
