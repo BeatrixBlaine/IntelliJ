@@ -5,7 +5,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import Model.User;
+
+import java.time.LocalDate;
 import java.util.Calendar;
+import java.time.Period;
 
 @RestController
 public class Controller {
@@ -29,7 +32,7 @@ public class Controller {
 
     // Post Mapping, Request Body, Input JSON Output JSON
 
-    @PostMapping("/users")
+    /* @PostMapping("/users")
     public ResponseEntity printUser(@RequestBody User user){
         //System.out.println("Printing Object User Name : " + user.getName() + ", location: " +user.getLocation())+ ;
         //return "Berhasil! Data user "+ user.getName() + ", location: " +user.getLocation())+ ;
@@ -38,18 +41,17 @@ public class Controller {
         user.setName(user.getName()+" tambahan");
         user.setTahun_lahir(tahun_sekarang - user.getAge());
         return new ResponseEntity(user, HttpStatus.OK);
-    }
+    } */
 
     @PostMapping("/users2")
     public ResponseEntity infoUser(@RequestBody User user){
 
-        Calendar kalender = Calendar.getInstance();
-        int tahun_sekarang = kalender.get(Calendar.YEAR);
-        user.setAge(tahun_sekarang - user.getTahun_lahir());
+        LocalDate today = LocalDate.now();
+        user.setAge(Period.between(user.getTahun_lahir(), today).getYears());
         return new ResponseEntity(user, HttpStatus.OK);
     }
 
-    @PostMapping("/users3")
+    /* @PostMapping("/users3")
     public String konversi_tahun(@RequestBody User user){
 
         Calendar kalender = Calendar.getInstance();
@@ -57,6 +59,6 @@ public class Controller {
         user.setAge(tahun_sekarang - user.getTahun_lahir());
         return "Your Age is " + user.getAge() ;
 
-    }
+    } */
 
 }
