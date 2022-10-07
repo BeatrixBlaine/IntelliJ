@@ -1,5 +1,7 @@
 package com.example.HelloWorld;
 
+import Model.UserResponse;
+import Service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,13 +45,16 @@ public class Controller {
         return new ResponseEntity(user, HttpStatus.OK);
     } */
 
-    @PostMapping("/users2")
+    /*@PostMapping("/users2")
     public ResponseEntity infoUser(@RequestBody User user){
 
         LocalDate today = LocalDate.now();
-        user.setAge(Period.between(user.getTahun_lahir(), today).getYears());
-        return new ResponseEntity(user, HttpStatus.OK);
-    }
+        UserResponse response = new UserResponse();
+        response.setNama(user.getName());
+        response.setAge(Period.between(user.getTahun_lahir(), today).getYears());
+        response.setLocation(user.getLocation());
+        return new ResponseEntity(response, HttpStatus.OK);
+    }*/
 
     /* @PostMapping("/users3")
     public String konversi_tahun(@RequestBody User user){
@@ -61,4 +66,12 @@ public class Controller {
 
     } */
 
+    @PostMapping("/users4")
+    public ResponseEntity infoUser(@RequestBody User user){
+
+        UserService service = new UserService();
+        UserResponse response = service.modifyresponse(user);;
+        return new ResponseEntity(response, HttpStatus.OK);
+
+    }
 }
