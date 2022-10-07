@@ -9,10 +9,6 @@ import Model.User;
 
 public class UserService {
 
-    public String nama;
-    public long age;
-    public String location;
-
     public UserResponse modifyresponse(User user){
         UserResponse response = new UserResponse();
         LocalDate today = LocalDate.now();
