@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.*;
 
 import Model.User;
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.time.Period;
+import java.util.Map;
 
 @RestController
 public class Controller {
@@ -72,6 +74,21 @@ public class Controller {
         UserService service = new UserService();
         UserResponse response = service.modifyresponse(user);;
         return new ResponseEntity(response, HttpStatus.OK);
+
+    }
+
+    @GetMapping("/test")
+    public String testHeader(@RequestHeader String authorization){
+
+        System.out.println(authorization);
+        return "Success " + authorization;
+
+    }
+
+    @GetMapping("/test2")
+    public String handleHeader(@RequestHeader Map<String, String > mapValues){
+
+        return mapValues.toString();
 
     }
 }
