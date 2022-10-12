@@ -1,12 +1,13 @@
 package Service;
 
 import Model.UserResponse;
-import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDate;
 import java.time.Period;
 import Model.User;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserService {
 
     public UserResponse modifyresponse(User user){

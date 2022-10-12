@@ -1,11 +1,13 @@
 package Model;
 
 import java.util.Calendar;
+import java.time.LocalDate;
 
 public class User {
 
     private String name, location;
-    private long age, tahun_lahir;
+
+    private LocalDate tahun_lahir;
 
     public String getName() {
         return name;
@@ -23,19 +25,12 @@ public class User {
         this.location = location;
     }
 
-    public long getAge() {
-        return age;
-    }
 
-    public void setAge(long age) {
-        this.age = age;
-    }
-
-    public long getTahun_lahir() {
+    public LocalDate getTahun_lahir() {
         return tahun_lahir;
     }
 
-    public void setTahun_lahir(long tahun_lahir) {
+    public void setTahun_lahir(LocalDate tahun_lahir) {
         this.tahun_lahir = tahun_lahir;
     }
 }

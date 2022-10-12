@@ -8,10 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import Model.User;
 
-import java.lang.reflect.Array;
-import java.time.LocalDate;
-import java.util.Calendar;
-import java.time.Period;
 import java.util.Map;
 
 @RestController
@@ -91,4 +87,12 @@ public class Controller {
         return mapValues.toString();
 
     }
+
+    @GetMapping("/test3")
+    public ResponseEntity printheader(@RequestHeader Map<String, String> value){
+        
+        return new ResponseEntity(value, HttpStatus.OK);
+
+    }
+
 }
